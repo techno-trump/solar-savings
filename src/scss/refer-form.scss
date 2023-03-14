@@ -1,0 +1,137 @@
+.refer-form {
+	display: flex;
+	flex-direction: column;
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		border-bottom: 1.2px solid #AEAEAE;
+		padding-bottom: rem(16);
+	}
+	&__title {
+		color: #00ABA1;
+		font-size: rem(18);
+		font-weight: 600;
+		line-height: rem(27);
+		letter-spacing: 0.01em;
+		text-align: left;
+	}
+	&__close-btn {
+		align-self: center;
+		display: inline-block;
+		color: #FF852A;
+		font-size: rem(16);
+		& > span {
+			display: block;
+		}
+	}
+	&__body {
+		width: 100%;
+		padding-top: rem(16);
+		padding-bottom: rem(15);
+	}
+	&__body-inner {
+		display: flex;
+		flex-wrap: wrap;
+		margin: rem(-15);
+		@media screen and (max-width: $mobile) {
+			margin: rem(-10);
+		}
+	}
+	&__section {
+		padding: rem(15);
+		@media screen and (max-width: $mobile) {
+			padding: rem(10);
+		}
+		&_s100p {
+			flex-basis: 100%;
+		}
+		&_s50p {
+			flex-basis: 50%;
+		}
+		&_s25p {
+			flex-basis: 25%;
+		}
+		@media screen and (max-width: $mobile) {
+			&_s50p {
+				flex-basis: 100%;
+			}
+			&_s25p {
+				flex-basis: 100%;
+			}
+		}
+	}
+	&__section-inner {
+		display: flex;
+		flex-direction: column;
+	}
+	&__text {
+		font-size: rem(18);
+		font-weight: 400;
+		line-height: rem(32);
+		letter-spacing: 0.01em;
+		text-align: center;
+	}
+	&__zip-code-field {
+		max-width: rem(176);
+	}
+	&__state-field {
+		max-width: rem(176);
+	}
+	&__processing-result {
+		display: flex;
+		max-height: 0;
+		flex-direction: column;
+		align-items: center;
+		overflow: hidden;
+		font-size: rem(18);
+		font-weight: 500;
+		line-height: rem(27);
+		letter-spacing: 0.01em;
+		text-align: center;
+		transition: max-height 1s;
+		&_error {
+			color: #ED1C24;
+		}
+		&.show {
+			max-height: rem(60);
+		}
+	}
+}
+.form-group {
+	width: 100%;
+	&__inner {
+		display: flex;
+		flex-wrap: wrap;
+		margin: rem(-5) rem(-15);
+		@media screen and (max-width: $mobile) {
+			margin: rem(-10);
+		}
+	}
+	&__element {
+		padding: rem(5) rem(15);
+		@media screen and (max-width: $mobile) {
+			padding: rem(10);
+		}
+		&_s25p {
+			flex-basis: 25%;
+		}
+		&_s50p {
+			flex-basis: 50%;
+		}
+		&_s100p {
+			flex-basis: 100%;
+		}
+		@media screen and (max-width: $mobile) {
+			&_s50p {
+				flex-basis: 100%;
+			}
+			&_s25p {
+				flex-basis: 100%;
+			}
+		}
+	}
+	&__element-inner {
+		display: flex;
+		flex-direction: column;
+	}
+}

@@ -1,0 +1,39 @@
+<section class="guide">
+	<div class="guide__container">
+		<div class="guide__wrapper">
+			<h1 class="guide__title main-title">
+				See How Much You Can <span class="main-title_p2"> Save&nbsp;with&nbsp;Solar</span>&nbsp;!
+			</h1>
+			<div class="guide__header">
+				<div class="progress-bar guide__progress-bar"></div>
+			</div>
+			<div class="guide__sections">
+				<div class="guide__main-form">
+					@@include('_step-page.htm', {})
+				</div>
+				<div class="guide__booking-page">
+					@@include('_booking-page.htm', {})
+				</div>
+				<div class="guide__processing-page">
+					@@include('_processing-page.htm', {})
+				</div>
+				<div class="guide__summary-page">
+					@@include('_summary-page.htm', {})
+				</div>
+				<div class="guide__bad-summary-page">
+					@@include('_bad-summary-page.htm', {})
+				</div>
+				<div class="guide__article-page">
+					@@include('_article-page.htm', {})
+				</div>
+				
+			</div>
+			<script type="text/template" id="progress-bar-item">
+				<div class="progress-bar__item progress-bar__item_hidden" data-idx={{idx}}>
+					<div class="progress-bar__item-caption">{{caption}}</div>
+					<div class="progress-bar__item-state">{{state}}</div>
+				</div>
+			</script>
+		</div>
+	</div>
+</section>

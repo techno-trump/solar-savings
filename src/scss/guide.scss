@@ -1,0 +1,79 @@
+.guide {
+	&__wrapper {
+		padding-top: rem(30);
+	}
+	&__title {
+		display: none;
+		justify-content: center;
+		margin-bottom: rem(30);
+		.page[data-step="avaragePowerBill"] &,
+		.page[data-step="address"] &,
+		.page[data-step="homeType"] &,
+		.page[data-step="roofShade"] &,
+		.page[data-step="creditScore"] &{
+			display: block;
+		}
+	}
+	&__header {
+		display: none;
+		.page[data-step="avaragePowerBill"] &,
+		.page[data-step="address"] &,
+		.page[data-step="homeType"] &,
+		.page[data-step="roofShade"] &,
+		.page[data-step="creditScore"] &,
+		.page[data-step="contact"] &,
+		.page[data-step="email"] &,
+		.page[data-step="phoneNumber"] &,
+		.page[data-step="checkingRebates"] &,
+		.page[data-step="processingForm"] & {
+			display: block; //tmp
+		}
+	}
+	&__progress-bar {
+	}
+	&__main-form {
+		display: none;
+		.page[data-step="avaragePowerBill"] &,
+		.page[data-step="address"] &,
+		.page[data-step="homeType"] &,
+		.page[data-step="roofShade"] &,
+		.page[data-step="creditScore"] &,
+		.page[data-step="contact"] &,
+		.page[data-step="email"] &,
+		.page[data-step="phoneNumber"] & {
+			display: block; //tmp
+		}
+	}
+	&__booking-page {
+		display: none;
+		.page[data-step="booking"] & {
+			display: block;
+		}
+	}
+	&__summary-page {
+		display: none;
+		.page[data-step="thankYou"] & {
+			display: block;
+		}
+	}
+	&__bad-summary-page {
+		display: none;
+		.page[data-step="badSummary"] & {
+			display: block;
+		}
+	}
+	&__processing-page {
+		display: none;
+		.page[data-step="checkingRebates"] &,
+		.page[data-step="processingForm"] &,
+		.page[data-step="processingBooking"] & {
+			display: block;
+		}
+	}
+	&__article-page {
+		display: none;
+		.page[data-step="article"] & {
+			display: block;
+		}
+	}
+}

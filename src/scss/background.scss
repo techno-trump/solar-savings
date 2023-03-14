@@ -1,0 +1,149 @@
+.background {
+	width: 100%;
+	height: 100%;
+	background-color: #F6F6F6;
+	background-image: url("@img/bg-top.png");
+	background-position: center top;
+	background-size: 100% rem(650);
+	background-repeat: no-repeat;
+	&__wrapper {
+		width: 100%;
+		height: 100%;
+	}
+	&__decorations {
+		width: 100%;
+		height: 100%;
+		//padding: 0 rem(90);
+	}
+	&__decorations-wrapper {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		max-width: rem(1760);
+		margin: 0 auto;
+		height: 100%;
+	}
+}
+.decoration-slide {
+	$root: &;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	flex-direction: column;
+	justify-content: flex-end;
+	
+	&[data-idx="1"] {
+		.page[data-step="avaragePowerBill"] &,
+		.page[data-step="address"] &,
+		.page[data-step="homeType"] & {
+			display: flex;
+		}
+		& #{$root}__wrapper {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			@media screen and (max-width: 1200px) {
+				justify-content: center;
+			}
+		}
+		& #{$root}__img-wrapper {
+			&:first-child {
+				flex: 0 1 rem(926);
+				@media screen and (max-width: 1200px) {
+					display: none;
+				}
+			}
+			&:last-child {
+				flex: 0 1 rem(762);
+				@media screen and (max-width: 1200px) {
+					flex: 0 1 100%;
+					max-width: rem(762);
+				}
+			}
+		}
+		& #{$root}__img {
+			width: 100%;
+		}
+	}
+	&[data-idx="2"] {
+		.page[data-step="roofShade"] &,
+		.page[data-step="creditScore"] &,
+		.page[data-step="contact"] &,
+		.page[data-step="email"] &,
+		.page[data-step="phoneNumber"] & {
+			display: flex;
+		}
+		& #{$root}__wrapper {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			@media screen and (max-width: 1200px) {
+				justify-content: center;
+			}
+		}
+		& #{$root}__img-wrapper {
+			&:first-child {
+				flex: 0 1 rem(900);
+				@media screen and (max-width: 1200px) {
+					display: none;
+				}
+			}
+			&:last-child {
+				flex: 0 1 rem(798);
+				@media screen and (max-width: 1200px) {
+					flex: 0 1 100%;
+					max-width: rem(762);
+				}
+			}
+		}
+		& #{$root}__img {
+			width: 100%;
+		}
+	}
+	&[data-idx="3"] {
+		.page[data-step="booking"] & {
+			display: flex;
+		}
+		& #{$root}__wrapper {
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			@media screen and (max-width: 1200px) {
+				justify-content: center;
+			}
+		}
+		& #{$root}__img-wrapper {
+			&:first-child {
+				flex: 0 1 rem(762);
+				@media screen and (max-width: 1200px) {
+					display: none;
+				}
+			}
+			&:last-child {
+				flex: 0 1 rem(792);
+				@media screen and (max-width: 1200px) {
+					flex: 0 1 100%;
+					max-width: rem(762);
+				}
+			}
+		}
+		& #{$root}__img {
+			width: 100%;
+		}
+	}
+	&[data-idx="4"] {
+		.page[data-step="thankYou"] &,
+		.page[data-step="badSummary"] & {
+			display: flex;
+		}
+		& #{$root}__wrapper {
+			flex-basis: 100%;
+			height: 100%;
+			background: url("@img/background-decor-04/01.svg") center top;
+			background-repeat: repeat-y;
+		}
+	}
+}

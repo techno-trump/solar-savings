@@ -1,0 +1,126 @@
+.base-form {
+	&__address-field {
+		width: 100%;
+	}
+	&__row {
+		display: flex;
+	}
+}
+.form-field {
+	position: relative;
+	&_inline {
+		display: flex;
+	}
+	&_radio {
+		& .form-field__input {
+			display: none;
+		}
+	}
+	&__input {
+		width: 100%;
+		font-style: normal;
+		font-weight: 400;
+		font-size: rem(18);
+		line-height: rem(28);
+		letter-spacing: 0.01em;
+		background: #FFFFFF;
+		border: rem(1.2) solid #AEAEAE;
+		border-radius: rem(50);
+		padding: rem(11) rem(24);
+		outline: none;
+		&:focus {
+			border: rem(1.2) solid #333333;
+		}
+		.error > & {
+			border-color: #ED1C24;
+		}
+		.valid > & {
+			border-color: #5CB925;
+		}
+	}
+	&__checkbox {
+		position: relative;
+		width: rem(18);
+		height: rem(18);
+		min-width: rem(18);
+		min-height: rem(18);
+		border: rem(1.5) solid #333333;
+		border-radius: rem(4.5);
+		margin: rem(5) 0;
+	}
+	&__checkbox-arrow {
+		display: none;
+		position: absolute;
+		color: green;
+		font-size: rem(6);
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+	&__checkbox-input {
+		display: none;
+		&:checked ~ .form-field__checkbox-arrow {
+			display: inline-block;
+		}
+		&:disabled ~ &__checkbox-arrow {
+			color: gray;
+		}
+	}
+	
+	
+	&__checkbox ~ &__label {
+		margin-left: rem(12.5);
+	}
+	&__label {
+		font-size: rem(18);
+		font-weight: 400;
+		line-height: rem(28);
+		letter-spacing: 0.01em;
+		text-align: left;
+	}
+	&__error {
+		display: none;
+		position: absolute;
+		font-size: rem(14);
+		line-height: rem(28);
+		letter-spacing: 0.01em;
+		text-align: left;
+		top: rem(-28);
+		left: rem(24);
+		color: #ED1C24;
+		.error > & {
+			display: block;
+		}
+	}
+	&__radio-label {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: rem(132);
+		min-width: rem(170);
+		height: 100%;
+		color: #00A743;
+		font-family: Poppins;
+		font-size: rem(24);
+		font-weight: 600;
+		line-height: rem(36);
+		letter-spacing: 0.01em;
+		background: #FFFFFF;
+		border: rem(2) solid #00A743;
+		box-shadow: 0px rem(8) rem(30) rgba(0, 0, 0, 0.16);
+		border-radius: rem(20);
+		text-align: center;
+		padding: rem(30) rem(52);
+		input[type="radio"]:checked + & {
+			color: rgb(255, 255, 255);
+			background-color: #00ABA1;
+			border-color: #00ABA1;
+		}
+		&:hover {
+			cursor: pointer;
+			color: white;
+			background-color: #00A743;
+			border-color: #00A743;
+		}
+	}
+}

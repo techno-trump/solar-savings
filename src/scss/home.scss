@@ -1,0 +1,30 @@
+//====================================================================================================
+.page {
+	&__content {
+		position: relative;
+	}
+	&__content-background {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+		z-index: $zi-background;
+	}
+	&__content-wrapper {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: $zi-content;
+	}
+	&__header {
+	}
+	&__main {
+	}
+	&__footer {
+	}
+}
+//====================================================================================================

@@ -1,0 +1,60 @@
+<section class="booking-step">
+	<h2 class="booking-step__title main-title main-title_p2">
+		Congrats {{firstName}}!
+	</h2>
+	<p class="booking-step__text" data-step="booking">
+		You’ve been approved to get solar for no upfront cost.
+	</p>
+	<div class="booking-step__calculator">
+		<div class="savings-calculator">
+			<div class="savings-calculator__text">
+				Based upon your average bill of 
+				<span class="savings-calculator__text_accent-v1">{{avaragePowerBill}}$</span>, 
+				your estimated savings over 
+				<span class="savings-calculator__text_accent-v1">{{yearsNumber}}</span> {{yearsLabel}}
+				by switching to solar is between 
+				<span class="savings-calculator__text_accent-v2">{{savings25}}$</span> 
+				and <span class="savings-calculator__text_accent-v2">{{savings50}}$</span>.
+			</div>
+			<div class="savings-calculator__years-input">
+				<div class="range">
+					<div class="range__value-container" id="years-to-calculate-indicator">
+						<div class="range__value">25 years</div>
+					</div>
+					<div class="range__input-container">
+						<input id="years-to-calculate-input" name="yearsToCalculate"
+							class="range__input"
+							type="range"
+							min="1"
+							max="30"
+							step="1"
+							value="25"
+						/>
+					</div>
+					<div class="range__label-container">
+						<div class="range__label">1 year</div>
+						<div class="range__label">30 years</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="booking-step__text" data-step="booking">
+		<p>
+			Grab a spot on our calendar below to get an
+exact estimate of your savings and to find out how much cash back you’ll receive from
+government incentives by making the switch.
+		</p>
+		<p>
+			<span class="booking-step__text_p2">You’ll like our energy advisors, they’re friendly!</span> If they aren’t, let us know and we’ll punish them.
+		</p>
+	</div>
+	<iframe name="calendar" src="https://api.leadconnectorhq.com/widget/appointment/service/1?group=cmss-appointment-setters" style="width: 100%;border:none;overflow: hidden;" scrolling="no" id="0wGGwJvARPFfn6gGDepH_1668853534144"></iframe><br><script src="https://api.leadconnectorhq.com/js/form_embed.js" type="text/javascript"></script>
+	<!-- <iframe src="https://api.leadconnectorhq.com/widget/appointment/service/english?group=powering-earth-discovery"
+		style="width: 100%;border:none;overflow: hidden;"
+		scrolling="no"
+		id="LBJEzhPt12SIckulDweI_1668110383294">
+	</iframe> -->
+	<script src="https://api.leadconnectorhq.com/js/form_embed.js" type="text/javascript">
+	</script>
+</section>

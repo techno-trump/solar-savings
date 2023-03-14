@@ -1,0 +1,40 @@
+.processing-step {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding-top: rem(30);
+	padding-bottom: rem(520);
+	@media screen and (max-width: $mobile) {
+		padding-bottom: rem(290);
+	}
+	&__title {
+		display: none;
+		margin-bottom: rem(60);
+		.page[data-step="checkingRebates"] &[data-step="checkingRebates"],
+		.page[data-step="processingForm"] &[data-step="processingForm"],
+		.page[data-step="processingBooking"] &[data-step="processingBooking"] {
+			display: block;
+		}
+	}
+	&__indicator {
+		display: flex;
+		justify-content: center;
+	}
+}
+.processing-indicator {
+	flex-basis: 100%;
+	max-width: rem(175);
+	&__bar {
+		width: 100%;
+		height: rem(20);
+		background-color: #F3F3F3;
+		border-radius: rem(20);
+		margin-bottom: rem(12);
+	}
+	&__text {
+		font-size: rem(18);
+		line-height: rem(32);
+		letter-spacing: 0.01em;
+		text-align: center;
+	}
+}
