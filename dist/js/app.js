@@ -5,12 +5,12 @@
         function testWebP(callback) {
             let webP = new Image;
             webP.onload = webP.onerror = function() {
-                callback(2 == webP.height);
+                callback(webP.height == 2);
             };
             webP.src = "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
         }
         testWebP((function(support) {
-            let className = true === support ? "webp" : "no-webp";
+            let className = support === true ? "webp" : "no-webp";
             document.documentElement.classList.add(className);
         }));
     }
@@ -135,7 +135,7 @@
                     e.preventDefault();
                     this._dataValue = buttonOpen.getAttribute(this.options.attributeOpenButton) ? buttonOpen.getAttribute(this.options.attributeOpenButton) : "error";
                     this.youTubeCode = buttonOpen.getAttribute(this.options.youtubeAttribute) ? buttonOpen.getAttribute(this.options.youtubeAttribute) : null;
-                    if ("error" !== this._dataValue) {
+                    if (this._dataValue !== "error") {
                         if (!this.isOpen) this.lastFocusEl = buttonOpen;
                         this.targetOpen.selector = `${this._dataValue}`;
                         this._selectorOpen = true;
@@ -152,12 +152,12 @@
                 }
             }.bind(this));
             document.addEventListener("keydown", function(e) {
-                if (this.options.closeEsc && 27 == e.which && "Escape" === e.code && this.isOpen) {
+                if (this.options.closeEsc && e.which == 27 && e.code === "Escape" && this.isOpen) {
                     e.preventDefault();
                     this.close();
                     return;
                 }
-                if (this.options.focusCatch && 9 == e.which && this.isOpen) {
+                if (this.options.focusCatch && e.which == 9 && this.isOpen) {
                     this._focusCatch(e);
                     return;
                 }
@@ -174,7 +174,7 @@
         open(selectorValue) {
             if (bodyLockStatus) {
                 this.bodyLock = document.documentElement.classList.contains("lock") && !this.isOpen ? true : false;
-                if (selectorValue && "string" === typeof selectorValue && "" !== selectorValue.trim()) {
+                if (selectorValue && typeof selectorValue === "string" && selectorValue.trim() !== "") {
                     this.targetOpen.selector = selectorValue;
                     this._selectorOpen = true;
                 }
@@ -231,7 +231,7 @@
             }
         }
         close(selectorValue) {
-            if (selectorValue && "string" === typeof selectorValue && "" !== selectorValue.trim()) this.previousOpen.selector = selectorValue;
+            if (selectorValue && typeof selectorValue === "string" && selectorValue.trim() !== "") this.previousOpen.selector = selectorValue;
             if (!this.isOpen || !bodyLockStatus) return;
             this.options.on.beforeClose(this);
             document.dispatchEvent(new CustomEvent("beforePopupClose", {
@@ -281,7 +281,7 @@
             const focusable = this.targetOpen.element.querySelectorAll(this._focusEl);
             const focusArray = Array.prototype.slice.call(focusable);
             const focusedIndex = focusArray.indexOf(document.activeElement);
-            if (e.shiftKey && 0 === focusedIndex) {
+            if (e.shiftKey && focusedIndex === 0) {
                 focusArray[focusArray.length - 1].focus();
                 e.preventDefault();
             }
@@ -381,7 +381,7 @@
         debug && console.log(...args);
     };
     function isStringFulfilled(string) {
-        return "string" === typeof string && string.length > 0;
+        return typeof string === "string" && string.length > 0;
     }
     let postId;
     let apiUrl;
@@ -412,10 +412,10 @@
     } ];
     const stepsMapping = [ "avaragePowerBill", "address", "creditScore", "contact", "email", "phoneNumber", "booking", "thankYou" ];
     const phoneNumberChecker = value => {
-        if ("string" === typeof value && /^\(\d{3}\)\s\d{3}-\d{4}$/.test(value)) return null; else return "Error: phone number is incorrect";
+        if (typeof value === "string" && /^\(\d{3}\)\s\d{3}-\d{4}$/.test(value)) return null; else return "Error: phone number is incorrect";
     };
     const phoneNumberFormatter = string => {
-        if (!string || "string" !== typeof string) return "";
+        if (!string || typeof string !== "string") return "";
         const allNumbers = string.replace(/^\+1?/, "").match(/\d/gi);
         if (!allNumbers) return "";
         return allNumbers.reduce(((acc, digit) => {
@@ -437,7 +437,7 @@
         }), []).join("");
     };
     const emailChecker = string => {
-        if ("string" === typeof string && /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(string)) return null; else return "Error: email is incorrect";
+        if (typeof string === "string" && /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(string)) return null; else return "Error: email is incorrect";
     };
     class DataStore {
         _store;
@@ -484,7 +484,7 @@
                 const thumbMiddleOffset = thumbPercentage / 2 * 100;
                 const borderOffset = thumbMiddleOffset + this._percentage * (1 - thumbPercentage);
                 let bgStyle = `linear-gradient(90deg, ${lowerColor} ${thumbMiddleOffset}%, ${lowerColor} ${borderOffset}%`;
-                if (this._progress < this._volume) bgStyle += `, ${void 0 !== higherColor ? higherColor : "rgba(255,255,255,0)"} ${borderOffset}%`;
+                if (this._progress < this._volume) bgStyle += `, ${higherColor !== void 0 ? higherColor : "rgba(255,255,255,0)"} ${borderOffset}%`;
                 bgStyle += ")";
                 node.style.backgroundImage = bgStyle;
             };
@@ -548,7 +548,7 @@
             const rootNode = document.querySelector(this._selector);
             rootNode.clientWidth;
             const valueNode = rootNode.firstElementChild;
-            if (this._template) if ("function" === typeof this._template) valueNode.textContent = this._template(value); else valueNode.textContent = this._template.replace("{{value}}", value); else valueNode.textContent = value;
+            if (this._template) if (typeof this._template === "function") valueNode.textContent = this._template(value); else valueNode.textContent = this._template.replace("{{value}}", value); else valueNode.textContent = value;
             const valueNodeWidth = valueNode.offsetWidth;
             valueNode.style.marginLeft = `calc(${percentage}% - ${valueNodeWidth / 2}px)`;
         }
@@ -687,7 +687,7 @@
         validate() {
             const node = document.forms[this._formName][this._name];
             const isRequired = node.required;
-            if (isRequired && "" === node.value) {
+            if (isRequired && node.value === "") {
                 node.parentElement.classList.add("error");
                 this.setErrorMsg("This field is required");
                 return false;
@@ -797,19 +797,19 @@
 
                       case "address":
                         const {address} = state;
-                        return "string" === typeof address && address.length > 3;
+                        return typeof address === "string" && address.length > 3;
 
                       case "homeType":
                         const {homeType} = state;
-                        return void 0 !== homeType;
+                        return homeType !== void 0;
 
                       case "roofShade":
                         const {roofShade} = state;
-                        return void 0 !== roofShade;
+                        return roofShade !== void 0;
 
                       case "creditScore":
                         const {creditScore} = state;
-                        return void 0 !== creditScore;
+                        return creditScore !== void 0;
 
                       case "contact":
                         const {firstName, lastName} = state;
@@ -840,7 +840,7 @@
             this._state = state;
             const handleVisibility = state => {
                 const currentStepAlias = stepsMapping[state.currentStep];
-                if ("homeType" === currentStepAlias || "roofShade" === currentStepAlias || "address" === currentStepAlias || "creditScore" === currentStepAlias || "contact" === currentStepAlias || "email" === currentStepAlias || "phoneNumber" === currentStepAlias) this.show(); else this.hide();
+                if (currentStepAlias === "homeType" || currentStepAlias === "roofShade" || currentStepAlias === "address" || currentStepAlias === "creditScore" || currentStepAlias === "contact" || currentStepAlias === "email" || currentStepAlias === "phoneNumber") this.show(); else this.hide();
             };
             handleVisibility(this._state.store);
             this._state.onChange(((state, prevState) => {
@@ -864,7 +864,7 @@
             this._state.onChange(((state, prevState) => {
                 if (state.isPhoneNumberValid) this.enable(); else this.disable();
                 const currentStepAlias = stepsMapping[state.currentStep];
-                if ("phoneNumber" === currentStepAlias) this.show(); else this.hide();
+                if (currentStepAlias === "phoneNumber") this.show(); else this.hide();
             }));
             this._selectNode().addEventListener("click", (e => {
                 e.preventDefault();
@@ -880,10 +880,10 @@
         constructor(state, lowerColor, higherColor) {
             this._state = state;
             this._state.onChange(((state, prevState, setState) => {
-                if (state.processing) if (0 === state.processingProgress || state.processingProgress !== prevState.processingProgress) {
+                if (state.processing) if (state.processingProgress === 0 || state.processingProgress !== prevState.processingProgress) {
                     const node = document.querySelector(".processing-indicator__bar");
                     let bgStyle = `linear-gradient(90deg, ${lowerColor} 0%, ${lowerColor} ${state.processingProgress}%`;
-                    bgStyle += `, ${void 0 !== higherColor ? higherColor : "rgba(255,255,255,0)"} ${state.processingProgress}%`;
+                    bgStyle += `, ${higherColor !== void 0 ? higherColor : "rgba(255,255,255,0)"} ${state.processingProgress}%`;
                     bgStyle += ")";
                     node.style.backgroundImage = bgStyle;
                     if (state.processingProgress < 80) setTimeout((() => {
@@ -908,7 +908,7 @@
             this._state.onChange(((state, prevState) => {
                 if (state.processing) this._selectNode().setAttribute("data-step", state.processing); else if (state.currentLocation) this._selectNode().setAttribute("data-step", "article"); else {
                     const currentStepAlias = stepsMapping[state.currentStep];
-                    if ("thankYou" === currentStepAlias && state.badSummary) this._selectNode().setAttribute("data-step", "badSummary"); else this._selectNode().setAttribute("data-step", currentStepAlias);
+                    if (currentStepAlias === "thankYou" && state.badSummary) this._selectNode().setAttribute("data-step", "badSummary"); else this._selectNode().setAttribute("data-step", currentStepAlias);
                 }
             }));
         }
@@ -991,7 +991,7 @@
                 e.preventDefault();
                 const location = e.currentTarget.getAttribute("data-link");
                 document.querySelector(".page");
-                if ("back" === location) state.set((state => ({
+                if (location === "back") state.set((state => ({
                     ...state,
                     currentLocation: null
                 }))); else state.set((state => ({
@@ -1062,7 +1062,7 @@
     window.addEventListener("message", (function(e) {
         if (e.data instanceof Array) {
             consoleInfo(`window::message::${e.data[0]}::${e.data[2]}`);
-            if ("set-sticky-contacts" === e.data[0]) {
+            if (e.data[0] === "set-sticky-contacts") {
                 const appointmentId = JSON.parse(e.data[2]).appointment.id;
                 state.set((state => ({
                     ...state,
@@ -1167,9 +1167,9 @@
         return yearlyPowerBill * ((Math.pow(coefficient, yearsNumber + 1) - 1) / (coefficient - 1) - 1);
     }
     function calculateSavings(avaragePowerBill, yearsNumber) {
-        const yearlyPowerBill = 12 * avaragePowerBill;
+        const yearlyPowerBill = avaragePowerBill * 12;
         const expenses = calculateExpenses(yearlyPowerBill, yearsNumber);
-        const solarCost = .75 * yearlyPowerBill * yearsNumber;
+        const solarCost = yearlyPowerBill * .75 * yearsNumber;
         return expenses - solarCost;
     }
     function initSavingsInformationUpdates(store) {
@@ -1178,8 +1178,8 @@
         const splitDigitGroups = value => String(value).split(/\B(?=(?:\d{3})+$)/g).join(",");
         const update = (yearsNumber, avaragePowerBill) => {
             const savings25 = Math.floor(calculateSavings(avaragePowerBill, yearsNumber));
-            const savings50 = 2 * savings25;
-            const yearsLabel = 1 == yearsNumber ? "year" : "years";
+            const savings50 = savings25 * 2;
+            const yearsLabel = yearsNumber == 1 ? "year" : "years";
             const updatedHTML = initialHTML.replace("{{avaragePowerBill}}", splitDigitGroups(avaragePowerBill)).replace("{{yearsNumber}}", yearsNumber).replace("{{yearsLabel}}", yearsLabel).replace("{{savings25}}", splitDigitGroups(savings25)).replace("{{savings50}}", splitDigitGroups(savings50));
             textNode.innerHTML = updatedHTML;
         };
@@ -1200,22 +1200,22 @@
                 ...state,
                 rebatesAreChecked: false
             })));
-            if (state.processingProgress !== prevState.processingProgress) if (state.processingProgress > 80 && "homeType" === currentStepAlias) setState((state => ({
+            if (state.processingProgress !== prevState.processingProgress) if (state.processingProgress > 80 && currentStepAlias === "homeType") setState((state => ({
                 ...state,
                 processing: null,
                 processingProgress: 0
             })));
             if (currentStep !== prevStep) {
                 if (currentStep < prevStep) stepProgressBar.prev(); else stepProgressBar.next();
-                if ("homeType" === currentStepAlias && !state.rebatesAreChecked) setState((state => ({
+                if (currentStepAlias === "homeType" && !state.rebatesAreChecked) setState((state => ({
                     ...state,
                     rebatesAreChecked: true,
                     processing: "checkingRebates",
                     processingProgress: 0
-                }))); else if ("booking" === currentStepAlias) {
+                }))); else if (currentStepAlias === "booking") {
                     const sendFormServiceBtnNode = document.querySelector("#send-form-btn");
                     sendFormServiceBtnNode.dispatchEvent(new Event("click"));
-                    if (!state.isOwner || "below600" === state.creditScore) {
+                    if (!state.isOwner || state.creditScore === "below600") {
                         const badSummaryTitleNode = document.querySelector("#bad-summary-title");
                         const badSummaryTitle = badSummaryTitleNode.textContent;
                         badSummaryTitleNode.textContent = badSummaryTitle.replace("{{firstName}}", state.firstName);
@@ -1278,7 +1278,7 @@
             const prevRoofShade = prevState.roofShade;
             const prevCreditScore = prevState.creditScore;
             const prevHomeType = prevState.homeType;
-            if (roofShade !== prevRoofShade && isStringFulfilled(roofShade) && "roofShade" === currentStepAlias || creditScore !== prevCreditScore && isStringFulfilled(creditScore) && "creditScore" === currentStepAlias || homeType !== prevHomeType && isStringFulfilled(homeType) && "homeType" === currentStepAlias) setState((state => ({
+            if (roofShade !== prevRoofShade && isStringFulfilled(roofShade) && currentStepAlias === "roofShade" || creditScore !== prevCreditScore && isStringFulfilled(creditScore) && currentStepAlias === "creditScore" || homeType !== prevHomeType && isStringFulfilled(homeType) && currentStepAlias === "homeType") setState((state => ({
                 ...state,
                 currentStep: state.currentStep + 1
             })));
@@ -1338,7 +1338,7 @@
         })));
         const yearsToCalculateSlider = new RangeSlider("#years-to-calculate-input", 40, "#00ABA1");
         const yearsToCalculateIndicator = new RangeValueIndicator("#years-to-calculate-indicator", (value => {
-            if (1 == value) return "1 year"; else return `${value} years`;
+            if (value == 1) return "1 year"; else return `${value} years`;
         }));
         initSavingsInformationUpdates(state);
         yearsToCalculateSlider.addIndicator(yearsToCalculateIndicator);
@@ -1370,7 +1370,7 @@
         const inputNodes = document.querySelectorAll("input");
         inputNodes.forEach((node => {
             const type = node.getAttribute("type");
-            if ("radio" === type) if (!node.checked) return;
+            if (type === "radio") if (!node.checked) return;
             node.dispatchEvent(new Event("change"));
         }));
     }

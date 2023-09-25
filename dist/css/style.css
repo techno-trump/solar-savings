@@ -238,7 +238,6 @@ body::after {
   left: 0;
   opacity: 0;
   -webkit-transition: opacity 0.8s ease 0s;
-  -o-transition: opacity 0.8s ease 0s;
   transition: opacity 0.8s ease 0s;
   pointer-events: none;
   z-index: 149;
@@ -256,7 +255,6 @@ body::after {
   right: 0;
   padding: 30px 10px;
   -webkit-transition: visibility 0.8s ease 0s;
-  -o-transition: visibility 0.8s ease 0s;
   transition: visibility 0.8s ease 0s;
   visibility: hidden;
   pointer-events: none;
@@ -306,7 +304,6 @@ body::after {
           transform: scale(0);
   -webkit-transition: -webkit-transform 0.3s ease 0s;
   transition: -webkit-transform 0.3s ease 0s;
-  -o-transition: transform 0.3s ease 0s;
   transition: transform 0.3s ease 0s;
   transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
   background-color: white;
@@ -1028,7 +1025,6 @@ input[type=radio]:checked + .form-field__radio-label {
   letter-spacing: 0.01em;
   text-align: center;
   -webkit-transition: max-height 1s;
-  -o-transition: max-height 1s;
   transition: max-height 1s;
 }
 
